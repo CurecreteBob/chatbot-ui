@@ -68,20 +68,7 @@ export default async function RootLayout({
   children,
   params: { locale }
 }: RootLayoutProps) {
-  const cookieStore = cookies()
-  const supabase = createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value
-        }
-      }
-    }
-  )
-  const session = (await supabase.auth.getSession()).data.session
-
+ 
   const { t, resources } = await initTranslations(locale, i18nNamespaces)
 
   return (
