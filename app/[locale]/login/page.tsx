@@ -29,9 +29,7 @@ export default async function Login({
 
    
 
-    if (error) {
-      return redirect(`/login?message=${error.message}`)
-    }
+   
 
     
 
